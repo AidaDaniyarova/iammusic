@@ -61,7 +61,7 @@ WSGI_APPLICATION = 'iam_music.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME', 'iammusic_db'),  
+        'NAME': os.getenv('DB_NAME', 'iammusic_db'),  # Default fallback value
         'USER': os.getenv('DB_USER', 'iammusic'),
         'PASSWORD': os.getenv('DB_PASSWORD', 'Iam_music'),
         'HOST': os.getenv('DB_HOST', 'postgresql-iammusic.alwaysdata.net'),
