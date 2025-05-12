@@ -61,9 +61,7 @@ function App() {
 
         </main>
         <footer className="footer">
-          <a href="/about">About</a>
-          <a href="/privacy">Privacy</a>
-          <a href="/terms">Terms</a>
+          Все права защищены
         </footer>
       </div>
 
