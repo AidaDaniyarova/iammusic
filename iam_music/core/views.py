@@ -30,7 +30,7 @@ class SongDetail(generics.RetrieveAPIView):
     queryset = Song.objects.all()
     serializer_class = SongSerializer
 
-HUGGINGFACE_API_URL = "https://api-inference.huggingface.co/models/t5-base"
+API_URL = "https://router.huggingface.co/cohere/compatibility/v1/chat/completions"
 headers = {
     "Authorization": f"Bearer {settings.HUGGINGFACE_API_KEY}"
 }
@@ -41,13 +41,20 @@ def generate_annotation(request):
         return JsonResponse({'error': 'No song line provided'}, status=400)
 
     payload = {
-        "inputs": f"Explain the meaning behind this song lyric: {song_line}",
+        "messages": [
+            {
+                "role": "user",
+                "content": f"Explain the meaning behind this song lyric in 1 sentence in russian: {song_line}"
+            }
+        ],
+        "max_tokens": 512,
+        "model": "command-a-03-2025"
     }
 
     try:
-        response = requests.post(HUGGINGFACE_API_URL, headers=headers, json=payload)
+        response = requests.post(API_URL, headers=headers, json=payload)
         response_data = response.json()
-        annotation = response_data.get('generated_text', 'Sorry, could not generate annotation.')
+        annotation = response_data["choices"][0]["message"]["content"]
         return JsonResponse({'annotation': annotation})
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)

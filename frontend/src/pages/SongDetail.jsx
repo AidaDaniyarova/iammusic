@@ -17,29 +17,24 @@ function SongDetail() {
   }, [id]);
 
   const handleLineClick = async (line, index) => {
-    if (annotations[index]) return; // уже есть аннотация
+  if (annotations[index]) return;
 
-    setLoadingLine(index);
-    try {
-      const response = await fetch("https://api-inference.huggingface.co/models/google/flan-t5-large", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${HF_API_KEY}`,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          inputs: `What does this lyric mean? "${line}"`
-        }),
-      });
-      const data = await response.json();
-      const explanation = data[0]?.generated_text || "No explanation.";
-      setAnnotations(prev => ({ ...prev, [index]: explanation }));
-    } catch (error) {
-      console.error("AI Error:", error);
-      setAnnotations(prev => ({ ...prev, [index]: "Ошибка при получении аннотации." }));
-    }
-    setLoadingLine(null);
-  };
+  setLoadingLine(index);
+  const response = await fetch(`http://localhost:8000/api/generate_annotation/?song_line=${encodeURIComponent(line)}`)
+;
+const text = await response.text();
+try {
+  const data = JSON.parse(text);
+  const explanation = data.annotation || "No explanation.";
+  setAnnotations(prev => ({ ...prev, [index]: explanation }));
+} catch (err) {
+  console.error("Failed to parse JSON. Response:", text);
+  setAnnotations(prev => ({ ...prev, [index]: "Ошибка при получении аннотации." }));
+}
+
+  setLoadingLine(null);
+};
+
 
   if (!song) return <div className="container"><div className="pt-5 px-4"><p className="animate-bounce">Loading...</p></div></div>;
 
