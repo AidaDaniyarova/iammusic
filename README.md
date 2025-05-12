@@ -8,13 +8,13 @@
 
 1. **Клонируйте репозиторий**:
    ```bash
-   git clone https://github.com/AidaDaniyarova/i-am-music.git
+   git clone https://github.com/AidaDaniyarova/iammusic.git
    cd iam-music
    ```
 
 2. **Backend (Django + DRF)**:
    ```bash
-   cd backend
+   cd iam_music
    pip install -r requirements.txt
    python manage.py migrate
    python manage.py runserver
@@ -33,6 +33,11 @@
      ```
      VITE_HF_TOKEN=your_token
      ```
+3. **Для запуска**:
+   ```bash
+   cd frontend
+   npm start
+   ```
 
 ---
 
