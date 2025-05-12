@@ -1,0 +1,194 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background-color-light: #f5f5f5;
+  --background-color-dark: #121212;
+  --text-color-light: #1e1e1e;
+  --text-color-dark: #e0e0e0;
+  --nav-background-light: #0e8388;
+  --nav-background-dark: #1f1f1f;
+  --container-background-light: #fff;
+  --container-background-dark: #1c1c1c;
+  --link-color-light: #306464;
+  --link-color-dark: #fdb034;
+  --input-border-light: #ccc;
+  --input-border-dark: #444;
+  --input-background-light: #fff;
+  --input-background-dark: #333;
+  --button-color-light: #0e8388;
+  --button-color-dark: #fdb034;
+}
+
+/* === Global === */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--background-color-light);
+  color: var(--text-color-light);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-theme {
+  background-color: var(--background-color-dark);
+  color: var(--text-color-dark);
+}
+
+/* === Navigation === */
+nav {
+  background-color: var(--nav-background-light);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+body.dark-theme nav {
+  background-color: var(--nav-background-dark);
+}
+
+nav a {
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: text-decoration 0.3s;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* === Footer === */
+/* === Footer === */
+footer.footer {
+  background-color: var(--nav-background-light);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-theme footer.footer {
+  background-color: var(--nav-background-dark);
+}
+
+footer.footer a {
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: text-decoration 0.3s;
+}
+
+footer.footer a:hover {
+  text-decoration: underline;
+}
+
+/* === Container === */
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: var(--container-background-light);
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+body.dark-theme .container {
+  background-color: var(--container-background-dark);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+/* === Input === */
+input[type="text"] {
+  width: 100%;
+  max-width: 400px;
+  margin: 1rem auto;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid var(--input-border-light);
+  border-radius: 8px;
+  background-color: var(--input-background-light);
+  color: var(--text-color-light);
+  display: block;
+  transition: border 0.3s, background-color 0.3s;
+}
+
+body.dark-theme input[type="text"] {
+  border: 1px solid var(--input-border-dark);
+  background-color: var(--input-background-dark);
+  color: var(--text-color-dark);
+}
+
+/* === Song List === */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 0.75rem;
+}
+
+a.song-link {
+  color: var(--link-color-light);
+  font-size: 1.05rem;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a.song-link:hover {
+  text-decoration: underline;
+}
+
+body.dark-theme a.song-link {
+  color: var(--link-color-dark);
+}
+
+/* === Toggle Theme Button === */
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background-color: var(--button-color-light);
+  color: white;
+  font-weight: bold;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background-color: #306464;
+}
+
+body.dark-theme .theme-toggle {
+  background-color: var(--button-color-dark);
+  color: #000;
+}
+
+body.dark-theme .theme-toggle:hover {
+  background-color: #d89f23;
+}
+body {
+  background-color: var(--background-color-light);
+  color: var(--text-color-light);
+  transition: all 0.3s ease;
+}
+
+body.dark-theme {
+  background-color: var(--background-color-dark);
+  color: var(--text-color-dark);
+}
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
