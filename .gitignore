@@ -1,0 +1,7 @@
+.vercel
+.idea
+iam_music/staticfiles
+iam_music/iam_music/.env
+iam_music/iam_music/__pycache__
+iam_music/core/__pycache__
+iam_music/core/migrations/__pycache__
