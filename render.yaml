@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: iam_music
+    env: python
+    rootDir: iam_music
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput
+    startCommand: gunicorn iam_music.wsgi:application
+    plan: free
+    envVars:
+      - key: SECRET_KEY
+        sync: false
+      - key: DEBUG
+        value: "False"
+      - key: DATABASE_URL
+        sync: false
