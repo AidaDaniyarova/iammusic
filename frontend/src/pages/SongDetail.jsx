@@ -31,7 +31,7 @@ function SongDetail() {
     setLoadingLine(index);
     try {
       const response = await fetch(
-        `http://localhost:8000/api/generate_annotation/?song_line=${encodeURIComponent(
+        `https://iammusic.onrender.com/api/generate_annotation/?song_line=${encodeURIComponent(
           line
         )}&song_id=${id}&task=${task}`
       );
