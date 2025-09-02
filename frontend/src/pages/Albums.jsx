@@ -9,7 +9,7 @@ function Albums() {
   useEffect(() => {
     api.get('songs/')
       .then(res => setSongs(res.data))
-      .catch(err => console.error("Ошибка загрузки песен:", err));
+      .catch(err => console.error("Error loading songs:", err));
   }, []);
 
   const filteredSongs = songs.filter(song => {

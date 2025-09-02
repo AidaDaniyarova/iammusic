@@ -30,7 +30,7 @@ body {
   transition: background-color 0.3s, color 0.3s;
 }
 
-body.dark-theme {
+body.dark {
   background-color: var(--background-color-dark);
   color: var(--text-color-dark);
 }
@@ -44,7 +44,7 @@ nav {
   gap: 2rem;
 }
 
-body.dark-theme nav {
+body.dark nav {
   background-color: var(--nav-background-dark);
 }
 
@@ -72,7 +72,7 @@ footer.footer {
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
 }
 
-body.dark-theme footer.footer {
+body.dark footer.footer {
   background-color: var(--nav-background-dark);
 }
 
@@ -100,7 +100,7 @@ footer.footer a:hover {
   transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-body.dark-theme .container {
+body.dark .container {
   background-color: var(--container-background-dark);
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
 }
@@ -120,7 +120,7 @@ input[type="text"] {
   transition: border 0.3s, background-color 0.3s;
 }
 
-body.dark-theme input[type="text"] {
+body.dark input[type="text"] {
   border: 1px solid var(--input-border-dark);
   background-color: var(--input-background-dark);
   color: var(--text-color-dark);
@@ -147,7 +147,7 @@ a.song-link:hover {
   text-decoration: underline;
 }
 
-body.dark-theme a.song-link {
+body.dark a.song-link {
   color: var(--link-color-dark);
 }
 
@@ -171,12 +171,12 @@ body.dark-theme a.song-link {
   background-color: #306464;
 }
 
-body.dark-theme .theme-toggle {
+body.dark .theme-toggle {
   background-color: var(--button-color-dark);
   color: #000;
 }
 
-body.dark-theme .theme-toggle:hover {
+body.dark .theme-toggle:hover {
   background-color: #d89f23;
 }
 body {
@@ -185,7 +185,7 @@ body {
   transition: all 0.3s ease;
 }
 
-body.dark-theme {
+body.dark {
   background-color: var(--background-color-dark);
   color: var(--text-color-dark);
 }
