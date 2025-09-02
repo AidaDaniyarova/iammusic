@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = False
 
 # Allowed hosts for production
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', 'iammusic-chi.vercel.app']
+ALLOWED_HOSTS = ['*']
 
 # Secret key
 SECRET_KEY = os.getenv("SECRET_KEY", "fallback-secret-key")
