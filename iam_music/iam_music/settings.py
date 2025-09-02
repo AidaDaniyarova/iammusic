@@ -1,12 +1,24 @@
 import os
 from pathlib import Path
-
 from dotenv import load_dotenv
 
+# Load environment variables
+load_dotenv()
+
+# Base directory
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']
+# Allowed hosts for production
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', 'iammusic-chi.vercel.app']
 
+# Secret key
+SECRET_KEY = os.getenv("SECRET_KEY", "fallback-secret-key")
+
+# HuggingFace API Key
+HUGGINGFACE_API_KEY = os.getenv('HUGGINGFACE_API_KEY')
 
 # Application definition
 INSTALLED_APPS = [
@@ -16,11 +28,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Third-party apps
     'corsheaders',
-    'core',
     'rest_framework',
+
+    # Local apps
+    'core',
 ]
-BASE_DIR = Path(__file__).resolve().parent.parent
+
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -32,17 +48,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-SECRET_KEY = os.getenv("SECRET_KEY", "fallback-secret-key")
-
-
 ROOT_URLCONF = 'iam_music.urls'
-load_dotenv()
-HUGGINGFACE_API_KEY = os.getenv('HUGGINGFACE_API_KEY')
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -57,7 +68,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'iam_music.wsgi.application'
 
-
+# Database configuration
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -69,21 +80,12 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
 # Internationalization
@@ -93,26 +95,26 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+# Static files
 STATIC_URL = '/static/'
-
 STATICFILES_DIRS = [BASE_DIR / "static"]
-
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
+# Media files
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = BASE_DIR / "media"
 
-
+# CORS settings
 CORS_ALLOW_ALL_ORIGINS = True
 
-
+# REST framework settings
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
     ]
 }
 
-
+# Security settings
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 X_FRAME_OPTIONS = 'DENY'

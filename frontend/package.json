@@ -4,17 +4,19 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-  "start:django": "cd ../ && cd iam_music && python manage.py runserver",
-  "start:react": "vite",
-  "start": "concurrently \"npm run start:django\" \"npm run start:react\"",
-  "dev": "vite",
-  "build": "vite build",
-  "preview": "vite preview",
-  "lint": "eslint ."
-},
+    "start:django": "cd ../ && cd iam_music && python manage.py runserver",
+    "start:react": "vite",
+    "start": "concurrently \"npm run start:django\" \"npm run start:react\"",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint ."
+  },
   "dependencies": {
+    "@headlessui/react": "^2.2.7",
     "autoprefixer": "^10.x",
     "axios": "^1.9.0",
+    "lucide-react": "^0.542.0",
     "postcss": "^8.x",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

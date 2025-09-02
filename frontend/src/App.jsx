@@ -19,6 +19,10 @@ function App() {
     document.body.classList.toggle('dark-theme', isDark);
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
   }, [isDark]);
+    useEffect(() => {
+    document.body.classList.toggle('dark', isDark);
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }, [isDark]);
 
   return (
     <Router>
@@ -61,7 +65,7 @@ function App() {
 
         </main>
         <footer className="footer">
-          Все права защищены
+          All rights reserved
         </footer>
       </div>
 
